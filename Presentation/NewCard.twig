@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css.css">
+		<title>Sonic &amp; Sega All-Stars Battle Royale</title>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="wrapper">
+				<img class="logo" src="images/logo.png" alt="logo"><br>
+				<table>
+					<tr>
+						<td>
+							<h2>New Card Creation</h2><br>
+							<form action="newCard.php" method="post" name="image" enctype="multipart/form-data">
+								<p class="login">Image (.PNG file):
+									<input type="file" name="image" accept=".png">
+									<input type="submit" value="Upload image" name="uploadimage"></p>
+							</form>
+							{% if validimage == 0 %}
+								<p class="login"><span>The file you tried to upload was not a .PNG file</span></p>
+							{% elseif validimage == 1 %}
+								<p class="login">The file was uploaded succesfully</p>
+							{% endif %}
+							<form action="newCard.php?action=createcard" method="post">
+								<p class="login">Name of character:
+									<input type="text" name="name" placeholder="Name" required></p>
+								<p class="login">
+									<label for="hp">HP: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									</label>
+									<select name="hp">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+									</select>
+								</p>
+								<p class="login">
+									<label for="power">Power: &nbsp;&nbsp;
+									</label>
+									<select name="power">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+									</select>
+								</p>
+								<p class="login">
+									<label for="defense">Defense:
+									</label>
+									<select name="defense">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+									</select>
+								</p>
+								<p class="login">
+									<label for="speed">Speed: &nbsp;&nbsp;
+									</label>
+									<select name="speed">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+									</select>
+								</p>
+								<input type="submit" value="Create card">
+							</form>
+							{% if validation == 0 %}
+								<p class="login"><span>A card with that name already exists</span></p>
+							{% elseif validation == 1 %}
+								<p class="login">Card succesfully created</p>
+							{% elseif validation == 2 %}
+								<p class="login"><span>No image was uploaded</span></p>
+							{% endif %}
+							<br><br>
+							<a class="button" href="login.php">Return to login page</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+
+</html>
+

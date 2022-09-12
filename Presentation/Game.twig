@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css.css">
+		<title>Sonic &amp; Sega All-Stars Battle Royale</title>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="wrapper">
+				<img class="logo" src="images/logo.png" alt="logo"><br>
+				{% if start == 0 %}
+					<center>
+						<h3>Please flip a coin to see which player may start.<br>
+							Sonic = Player 1 / Tails = Player 2</h3>
+					</center>
+				{% endif %}
+				{% if orderAttack == 1 %}
+					<center>
+						<h3>Characters have equal speed!<br>
+							Flip a coin to see who may attack first.<br>
+							Sonic = Player 1 / Tails = Player 2</h3>
+					</center>
+				{% endif %}
+				<table>
+					<tr>
+						<td colspan="5">
+							<h2>{{player1Username}}:
+								{% if start == 0 %}Please wait
+								{% else %}
+									{% if turn == 1 %}Your turn
+										{% elseif turn == 2 %}Please wait
+									{% endif %}
+								{% endif %}
+							</h2>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p class="textdeck">Deck</p>
+						</td>
+						<td colspan="4"></td>
+					</tr>
+					<tr>
+						<td class="deck"></td>
+						{{playingCardsP1}}
+					</tr>
+					<tr>
+						<td>
+							<p class="textdeck">Cards in deck:
+								{{countCardsInDeckP1}}</p>
+						</td>
+						<td colspan="4"></td>
+					</tr>
+					<tr>
+						<td colspan="5">
+							{% if coin == 1 %}<img class="coin" src="images/coinheads.png" alt="coin"><br>
+								{% else %}<img class="coin" src="images/cointails.png" alt="coin"><br>
+							{% endif %}
+							{% if start == 0 %}
+								<center>
+									<a class="button" href="game.php?action=flipStart">Flip Coin</a>
+								</center><br>
+							{% elseif orderAttack == 1 %}
+								<center>
+									<a class="button" href="game.php?action=flipSpeed">Flip Coin</a>
+								</center><br>
+							{% else %}
+								<center>
+									<a class="button" href="game.php?action=flip">Flip Coin</a>
+								</center><br>
+							{% endif %}
+						</td>
+					</tr>
+					<tr>
+						<td colspan="5">
+							<h2>{{player2Username}}:
+								{% if start == 0 %}Please wait
+								{% else %}
+									{% if turn == 2 %}Your turn
+										{% elseif turn == 1 %}Please wait
+									{% endif %}
+								{% endif %}
+							</h2>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p class="textdeck">Deck</p>
+						</td>
+						<td colspan="4"></td>
+					</tr>
+					<tr>
+						<td class="deck"></td>
+						{{playingCardsP2}}
+					</tr>
+					<tr>
+						<td>
+							<p class="textdeck">Cards in deck:
+								{{countCardsInDeckP2}}</p>
+						</td>
+						<td colspan="4"></td>
+					</tr>
+				</table>
+				<center>
+					<a class="button" href="game.php?reset=1">Reset Game</a>
+				</center>
+			</div>
+		</div>
+	</body>
+</html>
+

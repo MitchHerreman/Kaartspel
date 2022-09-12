@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css.css">
+		<title>Sonic &amp; Sega All-Stars Battle Royale</title>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="wrapper">
+				<img class="logo" src="images/logo.png" alt="logo"><br>
+				<table>
+					<tr>
+						<td>
+							<h2>Registration</h2><br>
+							<form action="register.php?action=register" method="post">
+								<p class="login">Username:
+									<input type="text" name="username" placeholder="Name" required></p>
+								<p class="login">Password:
+									<input type="password" name="password" placeholder="Password" required></p>
+								<p class="login">Confirm password:
+									<input type="password" name="passwordconfirm" placeholder="Password" required></p>
+								<input type="submit" value="Register">
+							</form>
+							{% if validation == 0 %}
+								<p class="login"><span>Username already exists</span></p>
+							{% elseif validation == 1 %}
+								<p class="login"><span>Passwords entered do not match</span></p>
+							{% elseif validation == 2 %}
+								<p class="login">Registration complete</p>
+							{% endif %}
+							<br><br>
+							<a class="button" href="login.php">Return to login page</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
+

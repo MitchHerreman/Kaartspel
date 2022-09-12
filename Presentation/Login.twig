@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css.css">
+		<title>Sonic &amp; Sega All-Stars Battle Royale</title>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="wrapper">
+				<img class="logo" src="images/logo.png" alt="logo"><br>
+				<table>
+					<tr>
+						<td>
+							<h2>Player 1:</h2><br>
+							{% if validationP1 == 2 %}
+								<p class="login">Login succesful, welcome back
+									{{usernameP1}}</p>
+								{% if usernameP1 == "Admin" %}
+									<a class="button" href="newCard.php">Create a new card</a> 
+								{% endif %}
+								<a href="logout.php?action=logoutP1" class="button">Log out</a><br>
+							{% else %}
+								<form action="login.php?action=loginP1" method="post">
+									<p class="login">Username:
+										<input type="text" name="usernameP1" placeholder="Name" required></p>
+									<p class="login">Password:
+										<input type="password" name="passwordP1" placeholder="Password" required></p>
+									<input type="submit" value="Log in">
+								</form>
+								{% if validationP1 == 0 %}
+									<p class="login"><span>Not a valid username</span></p>
+								{% elseif validationP1 == 1 %}
+									<p class="login"><span>Password incorrect</span></p>
+								{% endif %}
+							{% endif %}
+							<br>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h2>Player 2:</h2><br>
+							{% if validationP2 == 2 %}
+								<p class="login">Login succesful, welcome back
+									{{usernameP2}}</p>
+								{% if usernameP2 == "Admin" %}
+									<a class="button" href="newCard.php">Create a new card</a> 
+								{% endif %}
+								<a href="logout.php?action=logoutP2" class="button">Log out</a><br>
+							{% else %}
+								<form action="login.php?action=loginP2" method="post">
+									<p class="login">Username:
+										<input type="text" name="usernameP2" placeholder="Name" required></p>
+									<p class="login">Password:
+										<input type="password" name="passwordP2" placeholder="Password" required></p>
+									<input type="submit" value="Log in">
+								</form>
+								{% if validationP2 == 0 %}
+									<p class="login"><span>Not a valid username</span></p>
+								{% elseif validationP2 == 1 %}
+									<p class="login"><span>Password incorrect</span></p>
+								{% endif %}
+							{% endif %}
+							<br>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p class="login">Not a member yet? Register now</p>
+							<a class="button" href="register.php">Register</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+
+</html>
+
